@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import '../../../home/presentation/pages/home_page.dart';
-import '../widgets/splash_logo.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -10,56 +9,55 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage>
-    with SingleTickerProviderStateMixin {
 
-  late AnimationController _controller;
-  late Animation<double> _animation;
+class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      vsync: this,
-    );
-
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
-    );
-
-    _controller.forward();
-
     Timer(
       const Duration(seconds: 3),
       () {
-        Navigator.pushReplacement(
+        Navigator.pushReplacementNamed(
           context,
-          MaterialPageRoute(
-            builder: (_) => const HomePage(),
-          ),
+          AppRoutes.home,
         );
       },
     );
   }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.black,
 
       body: Center(
-        child: FadeTransition(
-          opacity: _animation,
-          child: const SplashLogo(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: const [
+
+            Icon(
+              Icons.directions_car,
+              color: Colors.white,
+              size: 100,
+            ),
+
+            SizedBox(height: 20),
+
+            Text(
+              "Carszivo",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 35,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+
+          ],
         ),
       ),
     );
