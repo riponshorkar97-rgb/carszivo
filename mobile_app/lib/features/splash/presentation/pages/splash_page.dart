@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import '../../../home/presentation/pages/home_page.dart';
 import '../widgets/splash_logo.dart';
 
 class SplashPage extends StatefulWidget {
@@ -29,6 +31,18 @@ class _SplashPageState extends State<SplashPage>
     );
 
     _controller.forward();
+
+    Timer(
+      const Duration(seconds: 3),
+      () {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (_) => const HomePage(),
+          ),
+        );
+      },
+    );
   }
 
   @override
