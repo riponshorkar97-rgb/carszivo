@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import '../../../home/data/models/car_model.dart';
 
 class CarDetailsPage extends StatelessWidget {
-  const CarDetailsPage({super.key});
+  final CarModel car;
+
+  const CarDetailsPage({
+    super.key,
+    required this.car,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,45 +30,46 @@ class CarDetailsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
 
-          children: const [
+          children: [
 
-            Icon(
+            const Icon(
               Icons.directions_car,
               color: Colors.white,
               size: 100,
             ),
 
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
 
             Text(
-              "Toyota Land Cruiser",
-              style: TextStyle(
+              car.name,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
               ),
             ),
 
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
 
             Text(
-              "Premium Luxury SUV",
-              style: TextStyle(
+              car.brand,
+              style: const TextStyle(
                 color: Colors.white70,
                 fontSize: 18,
               ),
             ),
 
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             Text(
-              "\$90,000",
-              style: TextStyle(
+              car.price,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
               ),
             ),
+
           ],
         ),
       ),
