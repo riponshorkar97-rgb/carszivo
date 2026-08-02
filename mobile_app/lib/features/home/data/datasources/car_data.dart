@@ -1,9 +1,7 @@
 import '../models/car_model.dart';
 
 class CarData {
-
   static List<CarModel> cars = [
-
     CarModel(
       name: "Land Cruiser",
       brand: "Toyota",
@@ -15,7 +13,6 @@ class CarData {
       transmission: "Automatic",
       description: "Premium luxury SUV with advanced performance.",
     ),
-
 
     CarModel(
       name: "LX 600",
@@ -29,7 +26,6 @@ class CarData {
       description: "Luxury SUV with premium comfort and technology.",
     ),
 
-
     CarModel(
       name: "Palisade",
       brand: "Hyundai",
@@ -42,6 +38,28 @@ class CarData {
       description: "Family luxury SUV with modern features.",
     ),
 
-  ];
+    CarModel(
+      name: "S-Class",
+      brand: "Mercedes-Benz",
+      price: "\$135,000",
+      image: "assets/cars/mercedes_s_class.png",
+      year: "2026",
+      engine: "3.0L Turbo",
+      mileage: "5,000 km",
+      transmission: "Automatic",
+      description: "Flagship luxury sedan with premium comfort.",
+    ),
 
+    CarModel(
+      name: "7 Series",
+      brand: "BMW",
+      price: "\$130,000",
+      image: "assets/cars/bmw_7_series.png",
+      year: "2026",
+      engine: "3.0L TwinPower Turbo",
+      mileage: "7,500 km",
+      transmission: "Automatic",
+      description: "Executive luxury sedan with advanced technology.",
+    ),
+  ];
 }
