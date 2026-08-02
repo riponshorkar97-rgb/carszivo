@@ -5,6 +5,7 @@ import '../../features/home/presentation/pages/home_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/car_details/presentation/pages/car_details_page.dart';
+import '../../features/home/data/models/car_model.dart';
 
 class AppRoutes {
 
@@ -44,8 +45,13 @@ class AppRoutes {
 
 
       case carDetails:
+
+        final car = settings.arguments as CarModel;
+
         return MaterialPageRoute(
-          builder: (_) => const SplashPage(),
+          builder: (_) => CarDetailsPage(
+            car: car,
+          ),
         );
 
 
