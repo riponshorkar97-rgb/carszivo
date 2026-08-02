@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../widgets/home_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/featured_car_card.dart';
+import '../widgets/car_list_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,25 +13,31 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.black,
 
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(20),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
 
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
 
-            children: [
+              children: [
 
-              const HomeHeader(),
+                const HomeHeader(),
 
-              const SizedBox(height: 25),
+                const SizedBox(height: 25),
 
-              const SearchBarWidget(),
+                const SearchBarWidget(),
 
-              const SizedBox(height: 30),
+                const SizedBox(height: 30),
 
-              const FeaturedCarCard(),
+                const FeaturedCarCard(),
 
-            ],
+                const SizedBox(height: 30),
+
+                const CarListCard(),
+
+              ],
+            ),
           ),
         ),
       ),
