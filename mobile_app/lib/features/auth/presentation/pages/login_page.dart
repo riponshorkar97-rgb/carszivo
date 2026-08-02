@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/auth_button.dart';
 
@@ -43,6 +44,27 @@ class LoginPage extends StatelessWidget {
             AuthButton(
               text: "Login",
               onPressed: () {},
+            ),
+
+            const SizedBox(height: 20),
+
+            TextButton(
+              onPressed: () {
+
+                Navigator.pushNamed(
+                  context,
+                  AppRoutes.register,
+                );
+
+              },
+
+              child: const Text(
+                "Create Account",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                ),
+              ),
             ),
 
           ],
