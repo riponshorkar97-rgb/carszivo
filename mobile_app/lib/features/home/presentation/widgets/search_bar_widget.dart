@@ -7,33 +7,24 @@ class SearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 55,
-
-      padding: const EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
-
       decoration: BoxDecoration(
         color: Colors.grey.shade900,
         borderRadius: BorderRadius.circular(15),
       ),
-
-      child: Row(
-        children: const [
-          Icon(
+      child: const TextField(
+        style: TextStyle(color: Colors.white),
+        decoration: InputDecoration(
+          prefixIcon: Icon(
             Icons.search,
             color: Colors.white,
           ),
-
-          SizedBox(width: 12),
-
-          Text(
-            "Search luxury cars...",
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 16,
-            ),
+          hintText: "Search luxury cars...",
+          hintStyle: TextStyle(
+            color: Colors.grey,
           ),
-        ],
+          border: InputBorder.none,
+          contentPadding: EdgeInsets.symmetric(vertical: 16),
+        ),
       ),
     );
   }
