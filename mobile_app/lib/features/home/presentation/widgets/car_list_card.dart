@@ -7,7 +7,6 @@ class CarListCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 220,
-
       margin: const EdgeInsets.only(bottom: 20),
 
       decoration: BoxDecoration(
