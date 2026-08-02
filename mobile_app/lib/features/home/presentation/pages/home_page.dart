@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../data/dummy_car_data.dart';
 import '../widgets/home_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/featured_car_card.dart';
@@ -34,7 +35,11 @@ class HomePage extends StatelessWidget {
 
                 const SizedBox(height: 30),
 
-                const CarListCard(),
+                ...DummyCarData.cars.map(
+                  (car) => CarListCard(
+                    car: car,
+                  ),
+                ),
 
               ],
             ),
