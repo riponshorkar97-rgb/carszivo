@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'core/routes/app_routes.dart';
 
 class CarszivoApp extends StatelessWidget {
   const CarszivoApp({super.key});
@@ -8,21 +9,15 @@ class CarszivoApp extends StatelessWidget {
     return MaterialApp(
       title: 'Carszivo',
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.blue,
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            'Welcome to Carszivo',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ),
-      ),
+
+      initialRoute: AppRoutes.splash,
+
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
