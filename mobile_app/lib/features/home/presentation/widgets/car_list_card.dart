@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../data/models/car_model.dart';
-import '../../../car_details/presentation/pages/car_details_page.dart';
+import '../../../../core/routes/app_routes.dart';
 
 class CarListCard extends StatelessWidget {
   final CarModel car;
@@ -15,13 +15,10 @@ class CarListCard extends StatelessWidget {
     return GestureDetector(
       onTap: () {
 
-        Navigator.push(
+        Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-            builder: (_) => CarDetailsPage(
-              car: car,
-            ),
-          ),
+          AppRoutes.carDetails,
+          arguments: car,
         );
 
       },
