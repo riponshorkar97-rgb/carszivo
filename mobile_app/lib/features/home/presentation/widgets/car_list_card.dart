@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import '../../data/models/car_model.dart';
 
 class CarListCard extends StatelessWidget {
-  const CarListCard({super.key});
+  final CarModel car;
+
+  const CarListCard({
+    super.key,
+    required this.car,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 220,
+
       margin: const EdgeInsets.only(bottom: 20),
 
       decoration: BoxDecoration(
@@ -14,42 +21,50 @@ class CarListCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
       ),
 
-      child: Padding(
-        padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(16),
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
 
-          children: const [
+        children: [
 
-            Icon(
-              Icons.directions_car,
+          const Icon(
+            Icons.directions_car,
+            color: Colors.white,
+            size: 60,
+          ),
+
+          const SizedBox(height: 15),
+
+          Text(
+            car.name,
+            style: const TextStyle(
               color: Colors.white,
-              size: 60,
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
             ),
+          ),
 
-            SizedBox(height: 15),
+          const SizedBox(height: 5),
 
-            Text(
-              "Mercedes-Benz S-Class",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
-              ),
+          Text(
+            car.brand,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontSize: 16,
             ),
+          ),
 
-            SizedBox(height: 8),
+          const SizedBox(height: 8),
 
-            Text(
-              "\$120,000",
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 18,
-              ),
+          Text(
+            car.price,
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 18,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
