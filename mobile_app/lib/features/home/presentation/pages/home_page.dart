@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../data/dummy_car_data.dart';
+
+import '../../data/datasources/car_data.dart';
 import '../widgets/home_header.dart';
 import '../widgets/search_bar_widget.dart';
-import '../widgets/featured_car_card.dart';
 import '../widgets/car_list_card.dart';
 
 class HomePage extends StatelessWidget {
@@ -14,35 +14,30 @@ class HomePage extends StatelessWidget {
       backgroundColor: Colors.black,
 
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.all(20),
+        child: Padding(
+          padding: const EdgeInsets.all(20),
 
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            children: [
+              const HomeHeader(),
 
-              children: [
+              const SizedBox(height: 25),
 
-                const HomeHeader(),
+              const SearchBarWidget(),
 
-                const SizedBox(height: 25),
+              const SizedBox(height: 25),
 
-                const SearchBarWidget(),
-
-                const SizedBox(height: 30),
-
-                const FeaturedCarCard(),
-
-                const SizedBox(height: 30),
-
-                ...DummyCarData.cars.map(
-                  (car) => CarListCard(
-                    car: car,
-                  ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: CarData.cars.length,
+                  itemBuilder: (context, index) {
+                    return CarListCard(
+                      car: CarData.cars[index],
+                    );
+                  },
                 ),
-
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
