@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../home/data/models/car_model.dart';
+import '../widgets/car_image_section.dart';
+import '../widgets/car_info_section.dart';
+import '../widgets/contact_button.dart';
 
 class CarDetailsPage extends StatelessWidget {
   final CarModel car;
@@ -24,53 +27,29 @@ class CarDetailsPage extends StatelessWidget {
         ),
       ),
 
-      body: Padding(
-        padding: const EdgeInsets.all(20),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
 
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
 
-          children: [
+            children: [
 
-            const Icon(
-              Icons.directions_car,
-              color: Colors.white,
-              size: 100,
-            ),
+              const CarImageSection(),
 
-            const SizedBox(height: 25),
+              const SizedBox(height: 25),
 
-            Text(
-              car.name,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 28,
-                fontWeight: FontWeight.bold,
+              CarInfoSection(
+                car: car,
               ),
-            ),
 
-            const SizedBox(height: 10),
+              const SizedBox(height: 30),
 
-            Text(
-              car.brand,
-              style: const TextStyle(
-                color: Colors.white70,
-                fontSize: 18,
-              ),
-            ),
+              const ContactButton(),
 
-            const SizedBox(height: 20),
-
-            Text(
-              car.price,
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-
-          ],
+            ],
+          ),
         ),
       ),
     );
