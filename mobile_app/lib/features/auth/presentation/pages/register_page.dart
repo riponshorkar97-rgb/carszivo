@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_text_field.dart';
+import '../widgets/auth_button.dart';
 
 class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
@@ -10,6 +12,7 @@ class RegisterPage extends StatelessWidget {
 
       appBar: AppBar(
         backgroundColor: Colors.black,
+
         title: const Text(
           "Create Account",
           style: TextStyle(
@@ -24,83 +27,28 @@ class RegisterPage extends StatelessWidget {
         child: Column(
           children: [
 
-            TextField(
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-
-              decoration: InputDecoration(
-                hintText: "Full Name",
-                hintStyle: const TextStyle(
-                  color: Colors.white54,
-                ),
-                filled: true,
-                fillColor: Colors.grey.shade900,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+            const CustomTextField(
+              hintText: "Full Name",
             ),
 
             const SizedBox(height: 20),
 
-            TextField(
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-
-              decoration: InputDecoration(
-                hintText: "Email",
-                hintStyle: const TextStyle(
-                  color: Colors.white54,
-                ),
-                filled: true,
-                fillColor: Colors.grey.shade900,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
+            const CustomTextField(
+              hintText: "Email",
             ),
 
             const SizedBox(height: 20),
 
-            TextField(
+            const CustomTextField(
+              hintText: "Password",
               obscureText: true,
-
-              style: const TextStyle(
-                color: Colors.white,
-              ),
-
-              decoration: InputDecoration(
-                hintText: "Password",
-                hintStyle: const TextStyle(
-                  color: Colors.white54,
-                ),
-                filled: true,
-                fillColor: Colors.grey.shade900,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
             ),
 
             const SizedBox(height: 30),
 
-            SizedBox(
-              width: double.infinity,
-
-              height: 55,
-
-              child: ElevatedButton(
-                onPressed: () {},
-
-                child: const Text(
-                  "Create Account",
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ),
+            AuthButton(
+              text: "Create Account",
+              onPressed: () {},
             ),
 
           ],
