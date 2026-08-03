@@ -2,10 +2,11 @@ name: Flutter Web CI
 
 on:
   push:
-    branches: [ main ]
-
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -16,15 +17,24 @@ jobs:
         working-directory: mobile_app
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           submodules: false
 
-      - uses: subosito/flutter-action@v2
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
         with:
           flutter-version: "3.35.0"
 
-      - run: flutter --version
-      - run: flutter pub get
-      - run: flutter analyze
-      - run: flutter build web
+      - name: Flutter version
+        run: flutter --version
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Build web
+        run: flutter build web
