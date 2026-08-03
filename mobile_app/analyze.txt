@@ -1,0 +1,36 @@
+Analyzing mobile_app...                                         
+
+  error • Target of URI doesn't exist: '../../data/models/car_model.dart'. Try creating the file referenced by the URI, or try using a URI for a file that does exist • lib/features/car_details/presentation/widgets/car_info_section.dart:2:8 • uri_does_not_exist
+  error • Undefined class 'CarModel'. Try changing the name to the name of an existing class, or creating a class with the name 'CarModel' • lib/features/car_details/presentation/widgets/car_info_section.dart:5:9 • undefined_class
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:6:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:6:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:6:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:6:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:6:5 • missing_required_argument
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:13:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:13:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:13:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:13:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:13:5 • missing_required_argument
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:20:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:20:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:20:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:20:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:20:5 • missing_required_argument
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:27:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:27:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:27:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:27:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:27:5 • missing_required_argument
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:34:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:34:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:34:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:34:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:34:5 • missing_required_argument
+  error • The named parameter 'description' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:41:5 • missing_required_argument
+  error • The named parameter 'engine' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:41:5 • missing_required_argument
+  error • The named parameter 'mileage' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:41:5 • missing_required_argument
+  error • The named parameter 'transmission' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:41:5 • missing_required_argument
+  error • The named parameter 'year' is required, but there's no corresponding argument. Try adding the required argument • lib/features/home/data/dummy_car_data.dart:41:5 • missing_required_argument
+  error • The name 'MyApp' isn't a class. Try correcting the name to match an existing class • test/widget_test.dart:16:35 • creation_with_non_type
+
