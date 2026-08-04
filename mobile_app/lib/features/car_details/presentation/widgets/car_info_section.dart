@@ -13,18 +13,19 @@ class CarInfoSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
+
       children: [
 
         Text(
           car.name,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 28,
+            fontSize: 30,
             fontWeight: FontWeight.bold,
           ),
         ),
 
-        const SizedBox(height: 8),
+        const SizedBox(height: 6),
 
         Text(
           car.brand,
@@ -34,68 +35,126 @@ class CarInfoSection extends StatelessWidget {
           ),
         ),
 
-        const SizedBox(height: 15),
+
+        const SizedBox(height: 18),
+
 
         Text(
           car.price,
+
           style: const TextStyle(
-            color: Colors.greenAccent,
-            fontSize: 24,
+            color: Color(0xFFD4AF37),
+            fontSize: 26,
             fontWeight: FontWeight.bold,
           ),
         ),
 
+
+        const SizedBox(height: 25),
+
+
+        Container(
+
+          padding: const EdgeInsets.all(16),
+
+          decoration: BoxDecoration(
+
+            color: const Color(0xFF012A50),
+
+            borderRadius: BorderRadius.circular(18),
+
+            border: Border.all(
+              color: Color(0xFFD4AF37),
+              width: 0.8,
+            ),
+
+          ),
+
+
+          child: Column(
+
+            crossAxisAlignment: CrossAxisAlignment.start,
+
+            children: [
+
+              _infoRow("Year", car.year.toString()),
+
+              _infoRow("Engine", car.engine),
+
+              _infoRow("Mileage", car.mileage),
+
+              _infoRow("Transmission", car.transmission),
+
+            ],
+          ),
+        ),
+
+
         const SizedBox(height: 20),
 
-        Text(
-          "Year: ${car.year}",
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
+
+        const Text(
+          "Description",
+
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
           ),
         ),
+
 
         const SizedBox(height: 8),
 
-        Text(
-          "Engine: ${car.engine}",
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
-        ),
-
-        const SizedBox(height: 8),
-
-        Text(
-          "Mileage: ${car.mileage}",
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
-        ),
-
-        const SizedBox(height: 8),
-
-        Text(
-          "Transmission: ${car.transmission}",
-          style: const TextStyle(
-            color: Colors.white70,
-            fontSize: 16,
-          ),
-        ),
-
-        const SizedBox(height: 15),
 
         Text(
           car.description,
+
           style: const TextStyle(
-            color: Colors.white,
+            color: Colors.white70,
             fontSize: 16,
             height: 1.5,
           ),
         ),
+
       ],
+    );
+  }
+
+
+  Widget _infoRow(String title, String value) {
+
+    return Padding(
+
+      padding: const EdgeInsets.symmetric(
+        vertical: 6,
+      ),
+
+      child: Row(
+
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+        children: [
+
+          Text(
+            title,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontSize: 15,
+            ),
+          ),
+
+
+          Text(
+            value,
+            style: const TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+        ],
+      ),
     );
   }
 }
