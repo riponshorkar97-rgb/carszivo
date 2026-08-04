@@ -1,16 +1,76 @@
 import 'package:flutter/material.dart';
+
 import '../../../../core/routes/app_routes.dart';
+import '../../../../services/auth_service.dart';
+
 import '../widgets/custom_text_field.dart';
 import '../widgets/auth_button.dart';
 
-class LoginPage extends StatelessWidget {
+
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+
+class _LoginPageState extends State<LoginPage> {
+
+  final AuthService _authService = AuthService();
+
+
+  final TextEditingController emailController =
+      TextEditingController();
+
+
+  final TextEditingController passwordController =
+      TextEditingController();
+
+
+  @override
+  void dispose() {
+
+    emailController.dispose();
+    passwordController.dispose();
+
+    super.dispose();
+
+  }
+
+
+  void _login() async {
+
+    final result = await _authService.login(
+
+      emailController.text,
+
+      passwordController.text,
+
+    );
+
+
+    if (result) {
+
+      debugPrint("Login Success");
+
+    } else {
+
+      debugPrint("Login Failed");
+
+    }
+
+  }
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
       backgroundColor: const Color(0xFF001F3F),
+
 
       appBar: AppBar(
 
@@ -18,17 +78,26 @@ class LoginPage extends StatelessWidget {
 
         elevation: 0,
 
+
         title: const Text(
+
           "Login",
 
           style: TextStyle(
+
             color: Colors.white,
+
             fontWeight: FontWeight.bold,
+
           ),
+
         ),
 
+
         iconTheme: const IconThemeData(
+
           color: Color(0xFFD4AF37),
+
         ),
 
       ),
@@ -42,6 +111,7 @@ class LoginPage extends StatelessWidget {
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.center,
+
 
           children: [
 
@@ -80,17 +150,26 @@ class LoginPage extends StatelessWidget {
             const SizedBox(height: 30),
 
 
-            const CustomTextField(
+            CustomTextField(
+
               hintText: "Email",
+
+              controller: emailController,
+
             ),
 
 
             const SizedBox(height: 20),
 
 
-            const CustomTextField(
+            CustomTextField(
+
               hintText: "Password",
+
               obscureText: true,
+
+              controller: passwordController,
+
             ),
 
 
@@ -101,7 +180,7 @@ class LoginPage extends StatelessWidget {
 
               text: "Login",
 
-              onPressed: () {},
+              onPressed: _login,
 
             ),
 
@@ -140,6 +219,7 @@ class LoginPage extends StatelessWidget {
 
             ),
 
+
           ],
 
         ),
@@ -147,5 +227,7 @@ class LoginPage extends StatelessWidget {
       ),
 
     );
+
   }
+
 }
