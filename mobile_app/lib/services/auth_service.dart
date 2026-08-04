@@ -1,32 +1,67 @@
+import '../features/auth/data/repositories/auth_repository.dart';
+import '../features/auth/data/models/user_model.dart';
+
+
 class AuthService {
 
-  // Future Firebase / Backend authentication integration
 
-  Future<bool> login(
+  final AuthRepository _repository = AuthRepository();
+
+
+
+  Future<UserModel?> login(
+
     String email,
+
     String password,
+
   ) async {
 
-    // Temporary placeholder
-    return true;
+
+    return await _repository.login(
+
+      email,
+
+      password,
+
+    );
+
   }
 
 
-  Future<bool> register(
+
+  Future<UserModel?> register(
+
     String name,
+
     String email,
+
     String password,
+
   ) async {
 
-    // Temporary placeholder
-    return true;
+
+    return await _repository.register(
+
+      name,
+
+      email,
+
+      password,
+
+    );
+
   }
+
 
 
   Future<void> logout() async {
 
-    // Logout logic will be added later
+
+    await _repository.logout();
+
 
   }
+
 
 }
