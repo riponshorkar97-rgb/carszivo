@@ -1,6 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
+
 import '../models/user_model.dart';
 
 class AuthRepository {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   static UserModel? _currentUser;
 
@@ -8,16 +11,26 @@ class AuthRepository {
     String email,
     String password,
   ) async {
+    try {
+      final credential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    // Firebase login logic will be added later
+      final user = credential.user;
 
-    _currentUser = UserModel(
-      id: "1",
-      name: "Carszivo User",
-      email: email,
-    );
+      if (user == null) return null;
 
-    return _currentUser;
+      _currentUser = UserModel(
+        id: user.uid,
+        name: user.displayName ?? "Carszivo User",
+        email: user.email ?? "",
+      );
+
+      return _currentUser;
+    } on FirebaseAuthException {
+      return null;
+    }
   }
 
   Future<UserModel?> register(
@@ -25,16 +38,28 @@ class AuthRepository {
     String email,
     String password,
   ) async {
+    try {
+      final credential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
 
-    // Firebase register logic will be added later
+      final user = credential.user;
 
-    _currentUser = UserModel(
-      id: "1",
-      name: name,
-      email: email,
-    );
+      if (user == null) return null;
 
-    return _currentUser;
+      await user.updateDisplayName(name);
+
+      _currentUser = UserModel(
+        id: user.uid,
+        name: name,
+        email: user.email ?? "",
+      );
+
+      return _currentUser;
+    } on FirebaseAuthException {
+      return null;
+    }
   }
 
   UserModel? getCurrentUser() {
@@ -42,6 +67,7 @@ class AuthRepository {
   }
 
   Future<void> logout() async {
+    await _auth.signOut();
     _currentUser = null;
   }
 }
