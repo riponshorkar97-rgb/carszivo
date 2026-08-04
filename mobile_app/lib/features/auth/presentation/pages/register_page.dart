@@ -17,14 +17,9 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final AuthService _authService = AuthService();
 
-  final TextEditingController nameController =
-      TextEditingController();
-
-  final TextEditingController emailController =
-      TextEditingController();
-
-  final TextEditingController passwordController =
-      TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -35,6 +30,11 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> _register() async {
+    debugPrint("Register button pressed");
+
+    debugPrint("Name: ${nameController.text}");
+    debugPrint("Email: ${emailController.text}");
+
     final user = await _authService.register(
       nameController.text.trim(),
       emailController.text.trim(),
