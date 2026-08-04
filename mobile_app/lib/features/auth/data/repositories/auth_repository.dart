@@ -1,9 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../models/user_model.dart';
 
 class AuthRepository {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   static UserModel? _currentUser;
 
@@ -49,6 +51,13 @@ class AuthRepository {
       if (user == null) return null;
 
       await user.updateDisplayName(name);
+
+      await _firestore.collection('users').doc(user.uid).set({
+        'uid': user.uid,
+        'name': name,
+        'email': user.email,
+        'createdAt': FieldValue.serverTimestamp(),
+      });
 
       _currentUser = UserModel(
         id: user.uid,
