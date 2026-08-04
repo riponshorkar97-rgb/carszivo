@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/widgets/bottom_nav_bar.dart';
 import '../../data/datasources/car_data.dart';
 import '../../data/models/car_model.dart';
 import '../widgets/car_list_card.dart';
@@ -17,8 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<CarModel> filteredCars = List.from(CarData.cars);
 
-  int _currentIndex = 0;
-
   void _searchCars(String query) {
     setState(() {
       if (query.trim().isEmpty) {
@@ -34,23 +31,10 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _onNavTap(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
-
-    // পরে এখানে Favorites, Sell, Chat, Profile navigation যোগ করব।
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-
-      bottomNavigationBar: BottomNavBar(
-        currentIndex: _currentIndex,
-        onTap: _onNavTap,
-      ),
 
       body: SafeArea(
         child: Padding(
