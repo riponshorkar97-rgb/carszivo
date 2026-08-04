@@ -1,12 +1,87 @@
 import 'package:flutter/material.dart';
+
+import '../../../../services/auth_service.dart';
+
 import '../widgets/custom_text_field.dart';
 import '../widgets/auth_button.dart';
 
-class RegisterPage extends StatelessWidget {
+
+class RegisterPage extends StatefulWidget {
+
   const RegisterPage({super.key});
+
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+
+}
+
+
+class _RegisterPageState extends State<RegisterPage> {
+
+
+  final AuthService _authService = AuthService();
+
+
+  final TextEditingController nameController =
+      TextEditingController();
+
+
+  final TextEditingController emailController =
+      TextEditingController();
+
+
+  final TextEditingController passwordController =
+      TextEditingController();
+
+
+
+  @override
+  void dispose() {
+
+    nameController.dispose();
+
+    emailController.dispose();
+
+    passwordController.dispose();
+
+    super.dispose();
+
+  }
+
+
+
+  void _register() async {
+
+
+    final result = await _authService.register(
+
+      nameController.text,
+
+      emailController.text,
+
+      passwordController.text,
+
+    );
+
+
+    if (result) {
+
+      debugPrint("Register Success");
+
+    } else {
+
+      debugPrint("Register Failed");
+
+    }
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
 
       backgroundColor: const Color(0xFF001F3F),
@@ -30,13 +105,6 @@ class RegisterPage extends StatelessWidget {
             fontWeight: FontWeight.bold,
 
           ),
-
-        ),
-
-
-        iconTheme: const IconThemeData(
-
-          color: Color(0xFFD4AF37),
 
         ),
 
@@ -90,31 +158,37 @@ class RegisterPage extends StatelessWidget {
             const SizedBox(height: 30),
 
 
-            const CustomTextField(
+            CustomTextField(
 
               hintText: "Full Name",
 
+              controller: nameController,
+
             ),
 
 
             const SizedBox(height: 20),
 
 
-            const CustomTextField(
+            CustomTextField(
 
               hintText: "Email",
 
+              controller: emailController,
+
             ),
 
 
             const SizedBox(height: 20),
 
 
-            const CustomTextField(
+            CustomTextField(
 
               hintText: "Password",
 
               obscureText: true,
+
+              controller: passwordController,
 
             ),
 
@@ -126,10 +200,9 @@ class RegisterPage extends StatelessWidget {
 
               text: "Create Account",
 
-              onPressed: () {},
+              onPressed: _register,
 
             ),
-
 
           ],
 
@@ -138,5 +211,7 @@ class RegisterPage extends StatelessWidget {
       ),
 
     );
+
   }
+
 }
