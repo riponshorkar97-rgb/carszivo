@@ -8,15 +8,18 @@ import '../widgets/auth_button.dart';
 
 
 class LoginPage extends StatefulWidget {
+
   const LoginPage({super.key});
 
 
   @override
   State<LoginPage> createState() => _LoginPageState();
+
 }
 
 
 class _LoginPageState extends State<LoginPage> {
+
 
   final AuthService _authService = AuthService();
 
@@ -29,10 +32,12 @@ class _LoginPageState extends State<LoginPage> {
       TextEditingController();
 
 
+
   @override
   void dispose() {
 
     emailController.dispose();
+
     passwordController.dispose();
 
     super.dispose();
@@ -40,13 +45,15 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-  void _login() async {
+
+  Future<void> _login() async {
+
 
     final result = await _authService.login(
 
-      emailController.text,
+      emailController.text.trim(),
 
-      passwordController.text,
+      passwordController.text.trim(),
 
     );
 
@@ -55,7 +62,11 @@ class _LoginPageState extends State<LoginPage> {
 
       debugPrint("Login Success");
 
-    } else {
+      // Home navigation will be added after authentication setup
+
+    } 
+    
+    else {
 
       debugPrint("Login Failed");
 
@@ -64,8 +75,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
+
 
     return Scaffold(
 
@@ -101,6 +114,7 @@ class _LoginPageState extends State<LoginPage> {
         ),
 
       ),
+
 
 
       body: Padding(
@@ -150,6 +164,7 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 30),
 
 
+
             CustomTextField(
 
               hintText: "Email",
@@ -159,7 +174,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
 
+
             const SizedBox(height: 20),
+
 
 
             CustomTextField(
@@ -173,7 +190,9 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
 
+
             const SizedBox(height: 30),
+
 
 
             AuthButton(
@@ -185,12 +204,15 @@ class _LoginPageState extends State<LoginPage> {
             ),
 
 
+
             const SizedBox(height: 20),
+
 
 
             TextButton(
 
               onPressed: () {
+
 
                 Navigator.pushNamed(
 
@@ -199,6 +221,7 @@ class _LoginPageState extends State<LoginPage> {
                   AppRoutes.register,
 
                 );
+
 
               },
 
