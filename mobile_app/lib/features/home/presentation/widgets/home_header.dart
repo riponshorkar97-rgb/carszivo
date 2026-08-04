@@ -22,16 +22,28 @@ class HomeHeader extends StatelessWidget {
                 color: Colors.white,
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
+                letterSpacing: 0.5,
               ),
             ),
 
             const SizedBox(height: 8),
 
-            Text(
-              "Find your dream luxury car",
+            const Text(
+              "Find Your Dream Luxury Car",
               style: TextStyle(
-                color: Colors.grey.shade400,
+                color: Colors.white70,
                 fontSize: 16,
+              ),
+            ),
+
+            const SizedBox(height: 5),
+
+            const Text(
+              "Premium Cars • Trusted Marketplace",
+              style: TextStyle(
+                color: Color(0xFFD4AF37),
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
               ),
             ),
 
@@ -39,8 +51,8 @@ class HomeHeader extends StatelessWidget {
         ),
 
 
-        IconButton(
-          onPressed: () {
+        InkWell(
+          onTap: () {
 
             Navigator.pushNamed(
               context,
@@ -49,10 +61,28 @@ class HomeHeader extends StatelessWidget {
 
           },
 
-          icon: const Icon(
-            Icons.person,
-            color: Colors.white,
-            size: 32,
+          borderRadius: BorderRadius.circular(50),
+
+          child: Container(
+            height: 50,
+            width: 50,
+
+            decoration: BoxDecoration(
+              color: const Color(0xFF012A50),
+
+              borderRadius: BorderRadius.circular(50),
+
+              border: Border.all(
+                color: const Color(0xFFD4AF37),
+                width: 1.5,
+              ),
+            ),
+
+            child: const Icon(
+              Icons.person,
+              color: Color(0xFFD4AF37),
+              size: 28,
+            ),
           ),
         ),
 
