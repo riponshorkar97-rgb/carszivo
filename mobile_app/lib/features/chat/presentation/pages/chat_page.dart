@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ChatPage extends StatelessWidget {
+  const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,14 +11,14 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text(
-          "Profile",
+          "Chat",
           style: TextStyle(color: Colors.white),
         ),
       ),
 
       body: const Center(
         child: Text(
-          "Profile Page\nComing Soon",
+          "Chat Page\nComing Soon",
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Colors.white,
