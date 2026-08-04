@@ -12,7 +12,40 @@ class CarszivoApp extends StatelessWidget {
 
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.blue,
+
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: const Color(0xFFD4AF37), // Luxury Gold
+          brightness: Brightness.dark,
+        ),
+
+        scaffoldBackgroundColor: const Color(0xFF001F3F), // Navy Blue
+
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Color(0xFF001F3F),
+          foregroundColor: Colors.white,
+          elevation: 0,
+        ),
+
+        cardTheme: CardThemeData(
+          color: Color(0xFF012A50),
+          elevation: 8,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+        ),
+
+        textTheme: const TextTheme(
+          headlineSmall: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+          ),
+
+          bodyMedium: TextStyle(
+            color: Colors.white70,
+          ),
+        ),
       ),
 
       initialRoute: AppRoutes.splash,
