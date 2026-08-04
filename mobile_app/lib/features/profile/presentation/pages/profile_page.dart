@@ -1,13 +1,42 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/routes/app_routes.dart';
+import '../../../../core/storage/session_manager.dart';
+
+
 class ProfilePage extends StatelessWidget {
+
   const ProfilePage({super.key});
+
+
+
+  void _logout(BuildContext context) {
+
+
+    SessionManager.clearSession();
+
+
+    Navigator.pushReplacementNamed(
+
+      context,
+
+      AppRoutes.login,
+
+    );
+
+
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
 
       backgroundColor: const Color(0xFF001F3F),
+
 
 
       appBar: AppBar(
@@ -15,6 +44,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: const Color(0xFF001F3F),
 
         elevation: 0,
+
 
         title: const Text(
 
@@ -30,6 +60,7 @@ class ProfilePage extends StatelessWidget {
 
         ),
 
+
         iconTheme: const IconThemeData(
 
           color: Color(0xFFD4AF37),
@@ -37,6 +68,7 @@ class ProfilePage extends StatelessWidget {
         ),
 
       ),
+
 
 
       body: Center(
@@ -47,6 +79,7 @@ class ProfilePage extends StatelessWidget {
 
 
           children: [
+
 
 
             Container(
@@ -74,6 +107,7 @@ class ProfilePage extends StatelessWidget {
               ),
 
 
+
               child: const Icon(
 
                 Icons.person,
@@ -87,7 +121,9 @@ class ProfilePage extends StatelessWidget {
             ),
 
 
+
             const SizedBox(height: 25),
+
 
 
             const Text(
@@ -107,7 +143,9 @@ class ProfilePage extends StatelessWidget {
             ),
 
 
+
             const SizedBox(height: 10),
+
 
 
             const Text(
@@ -126,6 +164,62 @@ class ProfilePage extends StatelessWidget {
 
             ),
 
+
+
+            const SizedBox(height: 35),
+
+
+
+            SizedBox(
+
+              width: 200,
+
+              height: 50,
+
+
+              child: ElevatedButton(
+
+                onPressed: () {
+
+                  _logout(context);
+
+                },
+
+
+                style: ElevatedButton.styleFrom(
+
+                  backgroundColor: const Color(0xFFD4AF37),
+
+                  shape: RoundedRectangleBorder(
+
+                    borderRadius: BorderRadius.circular(15),
+
+                  ),
+
+                ),
+
+
+                child: const Text(
+
+                  "Logout",
+
+                  style: TextStyle(
+
+                    color: Colors.black,
+
+                    fontSize: 18,
+
+                    fontWeight: FontWeight.bold,
+
+                  ),
+
+                ),
+
+              ),
+
+            ),
+
+
           ],
 
         ),
@@ -133,5 +227,7 @@ class ProfilePage extends StatelessWidget {
       ),
 
     );
+
   }
+
 }
