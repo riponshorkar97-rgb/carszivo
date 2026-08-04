@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _login() async {
 
 
-    final result = await _authService.login(
+    final user = await _authService.login(
 
       emailController.text.trim(),
 
@@ -58,17 +58,28 @@ class _LoginPageState extends State<LoginPage> {
     );
 
 
-    if (result) {
+    if (user != null) {
 
-      debugPrint("Login Success");
 
-      // Home navigation will be added after authentication setup
+      debugPrint(
+        "Login Success: ${user.name}",
+      );
+
+
+      debugPrint(
+        "User Email: ${user.email}",
+      );
+
 
     } 
     
     else {
 
-      debugPrint("Login Failed");
+
+      debugPrint(
+        "Login Failed",
+      );
+
 
     }
 
