@@ -6,22 +6,52 @@ class CarImageSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 220,
+
+      height: 240,
 
       width: double.infinity,
 
+
       decoration: BoxDecoration(
-        color: Colors.grey.shade900,
+
+        color: const Color(0xFF012A50),
+
         borderRadius: BorderRadius.circular(25),
+
+
+        border: Border.all(
+          color: const Color(0xFFD4AF37),
+          width: 1.5,
+        ),
+
+
+        boxShadow: const [
+
+          BoxShadow(
+            blurRadius: 15,
+            spreadRadius: 2,
+            offset: Offset(0, 8),
+          ),
+
+        ],
+
       ),
 
+
       child: const Center(
+
         child: Icon(
+
           Icons.directions_car,
-          color: Colors.white,
+
+          color: Color(0xFFD4AF37),
+
           size: 100,
+
         ),
+
       ),
+
     );
   }
 }
