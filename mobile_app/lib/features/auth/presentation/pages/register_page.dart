@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/storage/session_manager.dart';
 import '../../../../services/auth_service.dart';
 
 import '../widgets/custom_text_field.dart';
@@ -69,13 +70,18 @@ class _RegisterPageState extends State<RegisterPage> {
     if (user != null) {
 
 
+      SessionManager.saveSession(
+        user.email,
+      );
+
+
       debugPrint(
         "Register Success: ${user.name}",
       );
 
 
       debugPrint(
-        "User Email: ${user.email}",
+        "Session Saved: ${SessionManager.userEmail}",
       );
 
 
