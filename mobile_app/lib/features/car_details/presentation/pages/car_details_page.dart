@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../../home/data/models/car_model.dart';
 
+import '../../../../core/storage/favorites_manager.dart';
+
 import '../widgets/car_image_section.dart';
 import '../widgets/car_info_section.dart';
 import '../widgets/contact_button.dart';
 
 
 
-class CarDetailsPage extends StatelessWidget {
+class CarDetailsPage extends StatefulWidget {
 
   final CarModel car;
 
@@ -20,6 +22,54 @@ class CarDetailsPage extends StatelessWidget {
     required this.car,
 
   });
+
+
+
+  @override
+  State<CarDetailsPage> createState() => _CarDetailsPageState();
+
+}
+
+
+
+class _CarDetailsPageState extends State<CarDetailsPage> {
+
+
+  late bool isFavorite;
+
+
+
+  @override
+  void initState() {
+
+    super.initState();
+
+    isFavorite = FavoritesManager.isFavorite(
+      widget.car.id,
+    );
+
+  }
+
+
+
+  void _toggleFavorite() {
+
+
+    setState(() {
+
+
+      FavoritesManager.toggleFavorite(
+        widget.car.id,
+      );
+
+
+      isFavorite = !isFavorite;
+
+
+    });
+
+
+  }
 
 
 
@@ -53,25 +103,55 @@ class CarDetailsPage extends StatelessWidget {
 
           style: TextStyle(
 
-
             color: Colors.white,
-
 
             fontWeight: FontWeight.bold,
 
-
           ),
-
 
         ),
 
 
 
+        actions: [
+
+
+          IconButton(
+
+
+            onPressed: _toggleFavorite,
+
+
+
+            icon: Icon(
+
+
+              isFavorite
+                  ? Icons.favorite
+                  : Icons.favorite_border,
+
+
+
+              color: const Color(0xFFD4AF37),
+
+
+
+              size: 30,
+
+            ),
+
+
+
+          ),
+
+
+        ],
+
+
+
         iconTheme: const IconThemeData(
 
-
           color: Color(0xFFD4AF37),
-
 
         ),
 
@@ -162,9 +242,7 @@ class CarDetailsPage extends StatelessWidget {
 
                 child: CarInfoSection(
 
-
-                  car: car,
-
+                  car: widget.car,
 
                 ),
 
