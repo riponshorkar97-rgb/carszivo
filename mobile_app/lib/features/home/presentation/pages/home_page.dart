@@ -34,14 +34,19 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color(0xFF001F3F),
 
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 16,
+          ),
 
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+
               const HomeHeader(),
 
               const SizedBox(height: 25),
@@ -53,14 +58,33 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 25),
 
               Expanded(
-                child: ListView.builder(
-                  itemCount: filteredCars.length,
-                  itemBuilder: (context, index) {
-                    return CarListCard(
-                      car: filteredCars[index],
-                    );
-                  },
-                ),
+                child: filteredCars.isEmpty
+                    ? const Center(
+                        child: Text(
+                          'No cars found',
+                          style: TextStyle(
+                            color: Colors.white70,
+                            fontSize: 16,
+                          ),
+                        ),
+                      )
+                    : ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+
+                        itemCount: filteredCars.length,
+
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: const EdgeInsets.only(
+                              bottom: 16,
+                            ),
+
+                            child: CarListCard(
+                              car: filteredCars[index],
+                            ),
+                          );
+                        },
+                      ),
               ),
             ],
           ),
