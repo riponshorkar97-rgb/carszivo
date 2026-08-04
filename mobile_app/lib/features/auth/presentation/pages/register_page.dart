@@ -51,27 +51,43 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
 
-  void _register() async {
+  Future<void> _register() async {
 
 
-    final result = await _authService.register(
+    final user = await _authService.register(
 
-      nameController.text,
+      nameController.text.trim(),
 
-      emailController.text,
+      emailController.text.trim(),
 
-      passwordController.text,
+      passwordController.text.trim(),
 
     );
 
 
-    if (result) {
 
-      debugPrint("Register Success");
+    if (user != null) {
 
-    } else {
 
-      debugPrint("Register Failed");
+      debugPrint(
+        "Register Success: ${user.name}",
+      );
+
+
+      debugPrint(
+        "User Email: ${user.email}",
+      );
+
+
+    } 
+    
+    else {
+
+
+      debugPrint(
+        "Register Failed",
+      );
+
 
     }
 
