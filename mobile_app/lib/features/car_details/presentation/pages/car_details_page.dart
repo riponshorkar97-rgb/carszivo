@@ -15,38 +15,68 @@ class CarDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+
+      backgroundColor: const Color(0xFF001F3F),
 
       appBar: AppBar(
-        backgroundColor: Colors.black,
+
+        backgroundColor: const Color(0xFF001F3F),
+
+        elevation: 0,
+
         title: const Text(
           "Car Details",
+
           style: TextStyle(
             color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
+        ),
+
+        iconTheme: const IconThemeData(
+          color: Color(0xFFD4AF37),
         ),
       ),
 
+
       body: SingleChildScrollView(
+
+        physics: const BouncingScrollPhysics(),
+
         child: Padding(
-          padding: const EdgeInsets.all(20),
+
+          padding: const EdgeInsets.symmetric(
+            horizontal: 20,
+            vertical: 16,
+          ),
+
 
           child: Column(
+
             crossAxisAlignment: CrossAxisAlignment.start,
+
 
             children: [
 
+
               const CarImageSection(),
 
+
               const SizedBox(height: 25),
+
 
               CarInfoSection(
                 car: car,
               ),
 
+
               const SizedBox(height: 30),
 
+
               const ContactButton(),
+
+
+              const SizedBox(height: 20),
 
             ],
           ),
