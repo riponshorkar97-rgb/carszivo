@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/routes/app_routes.dart';
 import '../../../../services/auth_service.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/auth_button.dart';
@@ -52,6 +53,12 @@ class _RegisterPageState extends State<RegisterPage> {
             backgroundColor: Colors.green,
           ),
         );
+
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.home,
+        );
+
       } else {
         debugPrint("Register Failed");
 
@@ -64,6 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         );
       }
+
     } catch (e) {
       debugPrint(e.toString());
 
@@ -77,6 +85,7 @@ class _RegisterPageState extends State<RegisterPage> {
       );
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
