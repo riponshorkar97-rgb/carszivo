@@ -4,6 +4,7 @@ class DummyCarData {
   static final List<CarModel> cars = [
 
     CarModel(
+      id: "car_001",
       name: "Land Cruiser",
       brand: "Toyota",
       price: "\$90,000",
@@ -16,6 +17,7 @@ class DummyCarData {
     ),
 
     CarModel(
+      id: "car_002",
       name: "LX 600",
       brand: "Lexus",
       price: "\$110,000",
@@ -28,6 +30,7 @@ class DummyCarData {
     ),
 
     CarModel(
+      id: "car_003",
       name: "Palisade",
       brand: "Hyundai",
       price: "\$55,000",
@@ -40,6 +43,7 @@ class DummyCarData {
     ),
 
     CarModel(
+      id: "car_004",
       name: "S-Class",
       brand: "Mercedes-Benz",
       price: "\$120,000",
@@ -52,6 +56,7 @@ class DummyCarData {
     ),
 
     CarModel(
+      id: "car_005",
       name: "X7",
       brand: "BMW",
       price: "\$105,000",
@@ -64,6 +69,7 @@ class DummyCarData {
     ),
 
     CarModel(
+      id: "car_006",
       name: "Cayenne",
       brand: "Porsche",
       price: "\$95,000",
