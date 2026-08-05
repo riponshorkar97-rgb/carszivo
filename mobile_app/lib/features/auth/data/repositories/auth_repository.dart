@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,6 +10,7 @@ class AuthRepository {
 
   final FirebaseFirestore _firestore =
       FirebaseFirestore.instance;
+
 
 
   Future<UserModel?> register(
@@ -50,6 +50,7 @@ class AuthRepository {
 
 
     return user;
+
   }
 
 
@@ -70,7 +71,7 @@ class AuthRepository {
     User? firebaseUser = credential.user;
 
 
-    if(firebaseUser == null){
+    if (firebaseUser == null) {
       return null;
     }
 
@@ -82,13 +83,15 @@ class AuthRepository {
             .get();
 
 
-    if(doc.exists){
+
+    if (doc.exists) {
 
       return UserModel.fromMap(
-        doc.data() as Map<String,dynamic>,
+        doc.data() as Map<String, dynamic>,
       );
 
     }
+
 
 
     return UserModel(
@@ -104,11 +107,10 @@ class AuthRepository {
 
   Future<UserModel?> getCurrentUser() async {
 
-    User? firebaseUser =
-        _auth.currentUser;
+    User? firebaseUser = _auth.currentUser;
 
 
-    if(firebaseUser == null){
+    if (firebaseUser == null) {
       return null;
     }
 
@@ -120,10 +122,11 @@ class AuthRepository {
             .get();
 
 
-    if(doc.exists){
+
+    if (doc.exists) {
 
       return UserModel.fromMap(
-        doc.data() as Map<String,dynamic>,
+        doc.data() as Map<String, dynamic>,
       );
 
     }
@@ -142,6 +145,5 @@ class AuthRepository {
     await _auth.signOut();
 
   }
-
 
 }
