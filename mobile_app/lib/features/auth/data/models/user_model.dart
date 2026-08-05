@@ -6,13 +6,9 @@ class UserModel {
 
 
   UserModel({
-
     required this.id,
-
     required this.name,
-
     required this.email,
-
   });
 
 
@@ -20,13 +16,9 @@ class UserModel {
   Map<String, dynamic> toMap() {
 
     return {
-
       "id": id,
-
       "name": name,
-
       "email": email,
-
     };
 
   }
