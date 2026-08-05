@@ -30,7 +30,12 @@ class AuthRepository {
       );
 
       return _currentUser;
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
+      debugPrint("Login Error Code: ${e.code}");
+      debugPrint("Login Error Message: ${e.message}");
+      return null;
+    } catch (e) {
+      debugPrint("General Login Error: $e");
       return null;
     }
   }
@@ -65,8 +70,15 @@ class AuthRepository {
         email: user.email ?? "",
       );
 
+      debugPrint("Registration Successful");
+
       return _currentUser;
-    } on FirebaseAuthException {
+    } on FirebaseAuthException catch (e) {
+      debugPrint("Register Error Code: ${e.code}");
+      debugPrint("Register Error Message: ${e.message}");
+      return null;
+    } catch (e) {
+      debugPrint("General Register Error: $e");
       return null;
     }
   }
