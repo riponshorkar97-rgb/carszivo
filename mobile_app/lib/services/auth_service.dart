@@ -2,7 +2,9 @@ import '../features/auth/data/repositories/auth_repository.dart';
 import '../features/auth/data/models/user_model.dart';
 
 class AuthService {
+
   final AuthRepository _repository = AuthRepository();
+
 
   Future<UserModel?> login(
     String email,
@@ -13,6 +15,7 @@ class AuthService {
       password,
     );
   }
+
 
   Future<UserModel?> register(
     String name,
@@ -26,7 +29,9 @@ class AuthService {
     );
   }
 
+
   Future<void> logout() async {
     await _repository.logout();
   }
+
 }
