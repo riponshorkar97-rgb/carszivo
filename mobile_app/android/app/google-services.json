@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "248775915995",
+    "project_id": "carszivo-3f88f",
+    "storage_bucket": "carszivo-3f88f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248775915995:android:5d9d95838775283a7c4ffe",
+        "android_client_info": {
+          "package_name": "com.carszivo.mo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdk1IQspSHzGpQ9Npm-tm9dtQq_RPPvn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248775915995:android:313313345a64fdc27c4ffe",
+        "android_client_info": {
+          "package_name": "com.carszivo.mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdk1IQspSHzGpQ9Npm-tm9dtQq_RPPvn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248775915995:android:707246783ee695af7c4ffe",
+        "android_client_info": {
+          "package_name": "com.example.carszivo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdk1IQspSHzGpQ9Npm-tm9dtQq_RPPvn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

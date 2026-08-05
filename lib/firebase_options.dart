@@ -23,11 +23,20 @@ class DefaultFirebaseOptions {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -52,36 +61,9 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyDdk1IQspSHzGpQ9Npm-tm9dtQq_RPPvn8',
-    appId: '1:248775915995:android:707246783ee695af7c4ffe',
+    appId: '1:248775915995:android:5d9d95838775283a7c4ffe',
     messagingSenderId: '248775915995',
     projectId: 'carszivo-3f88f',
     storageBucket: 'carszivo-3f88f.firebasestorage.app',
-  );
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCdQPv-GzcJrg_6AmkAU450WYJ0RtQglTg',
-    appId: '1:248775915995:ios:529ae2ff67eebe497c4ffe',
-    messagingSenderId: '248775915995',
-    projectId: 'carszivo-3f88f',
-    storageBucket: 'carszivo-3f88f.firebasestorage.app',
-    iosBundleId: 'com.example.carszivo',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCdQPv-GzcJrg_6AmkAU450WYJ0RtQglTg',
-    appId: '1:248775915995:ios:529ae2ff67eebe497c4ffe',
-    messagingSenderId: '248775915995',
-    projectId: 'carszivo-3f88f',
-    storageBucket: 'carszivo-3f88f.firebasestorage.app',
-    iosBundleId: 'com.example.carszivo',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyChI16X9grBgj1KLJPpE5Kb1mFwfN4vvkg',
-    appId: '1:248775915995:web:116d9cf53fc919347c4ffe',
-    messagingSenderId: '248775915995',
-    projectId: 'carszivo-3f88f',
-    authDomain: 'carszivo-3f88f.firebaseapp.com',
-    storageBucket: 'carszivo-3f88f.firebasestorage.app',
-    measurementId: 'G-ZQP1DMH5PH',
   );
 }

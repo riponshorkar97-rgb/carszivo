@@ -1,0 +1,35 @@
+{
+  "firestore": {
+    "database": "(default)",
+    "location": "nam5",
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "flutter": {
+    "platforms": {
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "carszivo-3f88f",
+          "configurations": {
+            "android": "1:248775915995:android:5d9d95838775283a7c4ffe",
+            "web": "1:248775915995:web:82f6b4c3fcfdfa537c4ffe"
+          }
+        }
+      }
+    }
+  },
+  "hosting": {
+    "public": "mobile_app/build/web",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}
