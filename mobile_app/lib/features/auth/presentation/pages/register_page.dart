@@ -33,8 +33,10 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future<void> _register() async {
-    try {
-      debugPrint("Register button pressed");
+  print("BUTTON WORKING");
+
+  try {
+    debugPrint("Register button pressed");
 
       final user = await _authService.register(
         nameController.text.trim(),
