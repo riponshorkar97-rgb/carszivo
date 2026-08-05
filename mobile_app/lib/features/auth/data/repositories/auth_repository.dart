@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -29,6 +30,8 @@ class AuthRepository {
         email: user.email ?? "",
       );
 
+      debugPrint("Login Successful");
+
       return _currentUser;
     } on FirebaseAuthException catch (e) {
       debugPrint("Login Error Code: ${e.code}");
@@ -39,6 +42,7 @@ class AuthRepository {
       return null;
     }
   }
+
 
   Future<UserModel?> register(
     String name,
@@ -60,7 +64,7 @@ class AuthRepository {
       await _firestore.collection('users').doc(user.uid).set({
         'uid': user.uid,
         'name': name,
-        'email': user.email,
+        'email': user.email ?? "",
         'createdAt': FieldValue.serverTimestamp(),
       });
 
@@ -71,21 +75,26 @@ class AuthRepository {
       );
 
       debugPrint("Registration Successful");
+      debugPrint("User ID: ${user.uid}");
 
       return _currentUser;
+
     } on FirebaseAuthException catch (e) {
       debugPrint("Register Error Code: ${e.code}");
       debugPrint("Register Error Message: ${e.message}");
       return null;
+
     } catch (e) {
       debugPrint("General Register Error: $e");
       return null;
     }
   }
 
+
   UserModel? getCurrentUser() {
     return _currentUser;
   }
+
 
   Future<void> logout() async {
     await _auth.signOut();
