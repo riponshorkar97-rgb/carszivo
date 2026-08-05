@@ -1,47 +1,15 @@
-import 'package:flutter/foundation.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/user_model.dart';
 
+
 class AuthRepository {
+
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  static UserModel? _currentUser;
-
-  Future<UserModel?> login(
-    String email,
-    String password,
-  ) async {
-    try {
-      final credential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      final user = credential.user;
-
-      if (user == null) return null;
-
-      _currentUser = UserModel(
-        id: user.uid,
-        name: user.displayName ?? "Carszivo User",
-        email: user.email ?? "",
-      );
-
-      debugPrint("Login Successful");
-
-      return _currentUser;
-    } on FirebaseAuthException catch (e) {
-      debugPrint("Login Error Code: ${e.code}");
-      debugPrint("Login Error Message: ${e.message}");
-      return null;
-    } catch (e) {
-      debugPrint("General Login Error: $e");
-      return null;
-    }
-  }
+  final FirebaseFirestore _firestore =
+      FirebaseFirestore.instance;
 
 
   Future<UserModel?> register(
@@ -49,55 +17,130 @@ class AuthRepository {
     String email,
     String password,
   ) async {
-    try {
-      final credential = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
 
-      final user = credential.user;
+    UserCredential credential =
+        await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
 
-      if (user == null) return null;
 
-      await user.updateDisplayName(name);
+    User? firebaseUser = credential.user;
 
-      await _firestore.collection('users').doc(user.uid).set({
-        'uid': user.uid,
-        'name': name,
-        'email': user.email ?? "",
-        'createdAt': FieldValue.serverTimestamp(),
-      });
 
-      _currentUser = UserModel(
-        id: user.uid,
-        name: name,
-        email: user.email ?? "",
-      );
-
-      debugPrint("Registration Successful");
-      debugPrint("User ID: ${user.uid}");
-
-      return _currentUser;
-
-    } on FirebaseAuthException catch (e) {
-      debugPrint("Register Error Code: ${e.code}");
-      debugPrint("Register Error Message: ${e.message}");
-      return null;
-
-    } catch (e) {
-      debugPrint("General Register Error: $e");
+    if (firebaseUser == null) {
       return null;
     }
+
+
+    UserModel user = UserModel(
+      id: firebaseUser.uid,
+      name: name,
+      email: email,
+    );
+
+
+    await _firestore
+        .collection("users")
+        .doc(firebaseUser.uid)
+        .set(
+          user.toMap(),
+        );
+
+
+    return user;
   }
 
 
-  UserModel? getCurrentUser() {
-    return _currentUser;
+
+  Future<UserModel?> login(
+    String email,
+    String password,
+  ) async {
+
+
+    UserCredential credential =
+        await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+
+    User? firebaseUser = credential.user;
+
+
+    if(firebaseUser == null){
+      return null;
+    }
+
+
+    DocumentSnapshot doc =
+        await _firestore
+            .collection("users")
+            .doc(firebaseUser.uid)
+            .get();
+
+
+    if(doc.exists){
+
+      return UserModel.fromMap(
+        doc.data() as Map<String,dynamic>,
+      );
+
+    }
+
+
+    return UserModel(
+      id: firebaseUser.uid,
+      name: "",
+      email: email,
+    );
+
   }
+
+
+
+
+  Future<UserModel?> getCurrentUser() async {
+
+    User? firebaseUser =
+        _auth.currentUser;
+
+
+    if(firebaseUser == null){
+      return null;
+    }
+
+
+    DocumentSnapshot doc =
+        await _firestore
+            .collection("users")
+            .doc(firebaseUser.uid)
+            .get();
+
+
+    if(doc.exists){
+
+      return UserModel.fromMap(
+        doc.data() as Map<String,dynamic>,
+      );
+
+    }
+
+
+    return null;
+
+  }
+
+
+
 
 
   Future<void> logout() async {
+
     await _auth.signOut();
-    _currentUser = null;
+
   }
+
+
 }
