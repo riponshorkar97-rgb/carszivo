@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/routes/app_routes.dart';
 import '../../../../core/storage/session_manager.dart';
+import '../../../../core/widgets/global_loading.dart';
 import '../../../../services/auth_service.dart';
 
 import '../widgets/auth_button.dart';
@@ -12,10 +13,8 @@ class LoginPage extends StatefulWidget {
 
   const LoginPage({super.key});
 
-
   @override
-  State<LoginPage> createState() =>
-      _LoginPageState();
+  State<LoginPage> createState() => _LoginPageState();
 
 }
 
@@ -27,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
   final AuthService _authService = AuthService();
 
 
-
   final TextEditingController emailController =
       TextEditingController();
 
@@ -35,6 +33,8 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController =
       TextEditingController();
 
+
+  bool _isLoading = false;
 
 
 
@@ -51,8 +51,18 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-
   Future<void> _login() async {
+
+
+    if (_isLoading) return;
+
+
+    setState(() {
+
+      _isLoading = true;
+
+    });
+
 
 
     try {
@@ -68,26 +78,24 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
+      if (!mounted) return;
+
+
+
       if(user != null){
 
 
-        SessionManager.saveSession(
+        await SessionManager.saveSession(
           user.email,
         );
 
 
 
-        debugPrint(
-          "Login Success: ${user.name}",
-        );
+        setState(() {
 
-        debugPrint(
-          "User Email: ${user.email}",
-        );
+          _isLoading = false;
 
-
-
-        if(!mounted) return;
+        });
 
 
 
@@ -100,7 +108,18 @@ class _LoginPageState extends State<LoginPage> {
         );
 
 
+      } else {
+
+
+        setState(() {
+
+          _isLoading = false;
+
+        });
+
+
       }
+
 
 
     } catch(e) {
@@ -109,17 +128,22 @@ class _LoginPageState extends State<LoginPage> {
       if(!mounted) return;
 
 
+      setState(() {
+
+        _isLoading = false;
+
+      });
+
+
 
       ScaffoldMessenger.of(context)
           .showSnackBar(
 
         SnackBar(
 
-          content:
-              Text(e.toString()),
+          content: Text(e.toString()),
 
-          backgroundColor:
-              Colors.red,
+          backgroundColor: Colors.red,
 
         ),
 
@@ -127,7 +151,6 @@ class _LoginPageState extends State<LoginPage> {
 
 
     }
-
 
   }
 
@@ -140,6 +163,10 @@ class _LoginPageState extends State<LoginPage> {
 
 
     return Scaffold(
+
+
+      resizeToAvoidBottomInset: true,
+
 
       backgroundColor:
           const Color(0xFF001F3F),
@@ -162,8 +189,7 @@ class _LoginPageState extends State<LoginPage> {
 
             color: Colors.white,
 
-            fontWeight:
-                FontWeight.bold,
+            fontWeight: FontWeight.bold,
 
           ),
 
@@ -173,8 +199,7 @@ class _LoginPageState extends State<LoginPage> {
         iconTheme:
             const IconThemeData(
 
-          color:
-              Color(0xFFD4AF37),
+          color: Color(0xFFD4AF37),
 
         ),
 
@@ -182,155 +207,173 @@ class _LoginPageState extends State<LoginPage> {
 
 
 
-
-      body: Padding(
-
-        padding:
-            const EdgeInsets.all(20),
+      body: Stack(
 
 
-
-        child: Column(
-
-          mainAxisAlignment:
-              MainAxisAlignment.center,
+        children: [
 
 
 
-          children: [
+          SafeArea(
+
+
+            child: SingleChildScrollView(
+
+
+              padding:
+                  const EdgeInsets.all(20),
 
 
 
-            const Icon(
+              child: Column(
 
-              Icons.directions_car,
 
-              size: 80,
-
-              color:
-                  Color(0xFFD4AF37),
-
-            ),
+                children: [
 
 
 
-            const SizedBox(height:20),
+                  const SizedBox(height:40),
 
 
 
-            const Text(
+                  const Icon(
 
-              "Welcome Back",
+                    Icons.directions_car,
 
-              style: TextStyle(
+                    size:80,
 
-                color: Colors.white,
+                    color: Color(0xFFD4AF37),
 
-                fontSize: 28,
+                  ),
 
-                fontWeight:
-                    FontWeight.bold,
+
+
+                  const SizedBox(height:20),
+
+
+
+                  const Text(
+
+                    "Welcome Back",
+
+                    style: TextStyle(
+
+                      color: Colors.white,
+
+                      fontSize:28,
+
+                      fontWeight: FontWeight.bold,
+
+                    ),
+
+                  ),
+
+
+
+                  const SizedBox(height:30),
+
+
+
+                  CustomTextField(
+
+                    hintText:"Email",
+
+                    controller: emailController,
+
+                  ),
+
+
+
+                  const SizedBox(height:20),
+
+
+
+                  CustomTextField(
+
+                    hintText:"Password",
+
+                    obscureText:true,
+
+                    controller: passwordController,
+
+                  ),
+
+
+
+                  const SizedBox(height:30),
+
+
+
+                  AuthButton(
+
+                    text:"Login",
+
+                    onPressed:
+                      _isLoading ? null : _login,
+
+                  ),
+
+
+
+                  const SizedBox(height:20),
+
+
+
+                  TextButton(
+
+                    onPressed: _isLoading ? null : () {
+
+
+                      Navigator.pushNamed(
+
+                        context,
+
+                        AppRoutes.register,
+
+                      );
+
+
+                    },
+
+
+                    child: const Text(
+
+                      "Create Account",
+
+                      style: TextStyle(
+
+                        color: Color(0xFFD4AF37),
+
+                        fontSize:16,
+
+                      ),
+
+                    ),
+
+                  ),
+
+
+                ],
 
               ),
 
             ),
 
-
-
-            const SizedBox(height:30),
+          ),
 
 
 
-            CustomTextField(
+          if(_isLoading)
 
-              hintText:
-                  "Email",
+            const GlobalLoading(
 
-              controller:
-                  emailController,
+              message:"Logging in...",
 
             ),
 
 
 
-            const SizedBox(height:20),
-
-
-
-            CustomTextField(
-
-              hintText:
-                  "Password",
-
-              obscureText:
-                  true,
-
-              controller:
-                  passwordController,
-
-            ),
-
-
-
-            const SizedBox(height:30),
-
-
-
-            AuthButton(
-
-              text:
-                  "Login",
-
-              onPressed:
-                  _login,
-
-            ),
-
-
-
-            const SizedBox(height:20),
-
-
-
-
-            TextButton(
-
-              onPressed: () {
-
-
-                Navigator.pushNamed(
-
-                  context,
-
-                  AppRoutes.register,
-
-                );
-
-
-              },
-
-
-              child: const Text(
-
-                "Create Account",
-
-                style: TextStyle(
-
-                  color:
-                      Color(0xFFD4AF37),
-
-                  fontSize:16,
-
-                ),
-
-              ),
-
-            ),
-
-
-          ],
-
-        ),
+        ],
 
       ),
 
