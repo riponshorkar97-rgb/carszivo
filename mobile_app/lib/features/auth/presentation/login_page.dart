@@ -8,7 +8,6 @@ import '../../../../services/auth_service.dart';
 import '../widgets/auth_button.dart';
 import '../widgets/custom_text_field.dart';
 
-
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
@@ -16,9 +15,7 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
-
 class _LoginPageState extends State<LoginPage> {
-
   final AuthService _authService = AuthService();
 
   final TextEditingController emailController =
@@ -29,7 +26,6 @@ class _LoginPageState extends State<LoginPage> {
 
   bool _isLoading = false;
 
-
   @override
   void dispose() {
     emailController.dispose();
@@ -37,50 +33,40 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-
-
   Future<void> _login() async {
-
     if (_isLoading) return;
-
 
     setState(() {
       _isLoading = true;
     });
 
-
     try {
+      await Future.delayed(
+        const Duration(seconds: 4),
+      );
 
       final user = await _authService.login(
         emailController.text.trim(),
         passwordController.text.trim(),
       );
 
-
       if (!mounted) return;
 
-
       if (user != null) {
-
-
-        await SessionManager.saveSession(
-          user.email,
-        );
-
-
-        Navigator.pushReplacementNamed(
-          context,
-          AppRoutes.home,
-        );
-
-
-      } else {
-
+        await SessionManager.saveSession(user.email);
 
         setState(() {
           _isLoading = false;
         });
 
+        Navigator.pushReplacementNamed(
+          context,
+          AppRoutes.home,
+        );
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
 
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -88,20 +74,13 @@ class _LoginPageState extends State<LoginPage> {
             backgroundColor: Colors.red,
           ),
         );
-
       }
-
-
     } catch (e) {
-
-
       if (!mounted) return;
-
 
       setState(() {
         _isLoading = false;
       });
-
 
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
@@ -109,32 +88,19 @@ class _LoginPageState extends State<LoginPage> {
           backgroundColor: Colors.red,
         ),
       );
-
     }
-
   }
-
-
 
   @override
   Widget build(BuildContext context) {
-
-
-    return Scaffold(
-
+       return Scaffold(
       resizeToAvoidBottomInset: true,
-
       backgroundColor: const Color(0xFF001F3F),
 
-
       appBar: AppBar(
-
         backgroundColor: const Color(0xFF001F3F),
-
         elevation: 0,
-
         centerTitle: true,
-
         title: const Text(
           "Login",
           style: TextStyle(
@@ -142,30 +108,18 @@ class _LoginPageState extends State<LoginPage> {
             fontWeight: FontWeight.bold,
           ),
         ),
-
       ),
 
-
-
       body: Stack(
-
         children: [
 
-
           SafeArea(
-
             child: SingleChildScrollView(
-
               padding: const EdgeInsets.all(20),
-
-
               child: Column(
-
                 children: [
 
-
                   const SizedBox(height: 40),
-
 
                   const Icon(
                     Icons.directions_car,
@@ -173,9 +127,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Color(0xFFD4AF37),
                   ),
 
-
                   const SizedBox(height: 20),
-
 
                   const Text(
                     "Welcome Back",
@@ -186,18 +138,14 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
 
-
                   const SizedBox(height: 30),
-
 
                   CustomTextField(
                     hintText: "Email",
                     controller: emailController,
                   ),
 
-
                   const SizedBox(height: 20),
-
 
                   CustomTextField(
                     hintText: "Password",
@@ -205,33 +153,24 @@ class _LoginPageState extends State<LoginPage> {
                     obscureText: true,
                   ),
 
-
                   const SizedBox(height: 30),
-
 
                   AuthButton(
                     text: "Login",
                     onPressed: _isLoading ? null : _login,
                   ),
 
-
                   const SizedBox(height: 20),
 
-
                   TextButton(
-
                     onPressed: _isLoading
                         ? null
                         : () {
-
-                      Navigator.pushNamed(
-                        context,
-                        AppRoutes.register,
-                      );
-
-                    },
-
-
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.register,
+                            );
+                          },
                     child: const Text(
                       "Create Account",
                       style: TextStyle(
@@ -239,32 +178,18 @@ class _LoginPageState extends State<LoginPage> {
                         fontSize: 16,
                       ),
                     ),
-
                   ),
-
                 ],
-
               ),
-
             ),
-
           ),
 
-
-
           if (_isLoading)
-
             const GlobalLoading(
               message: "Logging in...",
             ),
-
-
         ],
-
       ),
-
     );
-
   }
-
-}
+} 
