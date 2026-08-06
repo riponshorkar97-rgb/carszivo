@@ -53,7 +53,7 @@ class _LoginPageState extends State<LoginPage> {
       if (!mounted) return;
 
       if (user != null) {
-        await SessionManager.saveSession(user.email);
+        SessionManager.saveSession(user.email);
 
         setState(() {
           _isLoading = false;
@@ -93,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-       return Scaffold(
+    return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: const Color(0xFF001F3F),
 
@@ -111,6 +111,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
 
       body: Stack(
+        fit: StackFit.expand,
         children: [
 
           SafeArea(
@@ -185,11 +186,13 @@ class _LoginPageState extends State<LoginPage> {
           ),
 
           if (_isLoading)
-            const GlobalLoading(
-              message: "Logging in...",
+            const Positioned.fill(
+              child: GlobalLoading(
+                message: "Logging in...",
+              ),
             ),
         ],
       ),
     );
   }
-} 
+}
