@@ -10,8 +10,8 @@ class GlobalLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black.withOpacity(0.45),
+    return Material(
+      color: Colors.black54,
       child: Center(
         child: Container(
           width: 260,
@@ -39,17 +39,13 @@ class GlobalLoading extends StatelessWidget {
                   Color(0xFFD4AF37),
                 ),
               ),
-
               const SizedBox(height: 24),
-
               const Icon(
                 Icons.directions_car_filled_rounded,
                 color: Color(0xFFD4AF37),
                 size: 42,
               ),
-
               const SizedBox(height: 18),
-
               Text(
                 message,
                 textAlign: TextAlign.center,
