@@ -10,7 +10,7 @@ class MyListingsPage extends StatefulWidget {
 }
 
 class _MyListingsPageState extends State<MyListingsPage> {
-
+  
   @override
   Widget build(BuildContext context) {
 
@@ -55,15 +55,18 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                 return Card(
 
-                  elevation: 0,
-
                   color: Colors.white,
 
-                  margin: const EdgeInsets.only(bottom: 15),
+                  elevation: 0,
+
+                  margin: const EdgeInsets.only(
+                    bottom: 15,
+                  ),
 
                   shape: RoundedRectangleBorder(
 
-                    borderRadius: BorderRadius.circular(16),
+                    borderRadius:
+                        BorderRadius.circular(16),
 
                   ),
 
@@ -99,11 +102,10 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                       style: const TextStyle(
 
+                        color: Colors.black,
+
                         fontWeight:
                             FontWeight.bold,
-
-                        color:
-                            Colors.black,
 
                       ),
 
@@ -122,6 +124,7 @@ class _MyListingsPageState extends State<MyListingsPage> {
                       ),
 
                     ),
+
 
                     trailing: const Icon(
 
@@ -161,11 +164,10 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
             Icons.directions_car,
 
+            size: 70,
+
             color:
                 Color(0xFFD4AF37),
-
-            size:
-                70,
 
           ),
 
@@ -179,11 +181,9 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
             style: TextStyle(
 
-              color:
-                  Colors.white,
+              color: Colors.white,
 
-              fontSize:
-                  22,
+              fontSize: 22,
 
               fontWeight:
                   FontWeight.bold,
@@ -205,8 +205,7 @@ class _MyListingsPageState extends State<MyListingsPage> {
               color:
                   Colors.white70,
 
-              fontSize:
-                  15,
+              fontSize: 15,
 
             ),
 
