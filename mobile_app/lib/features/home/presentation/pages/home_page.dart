@@ -8,6 +8,7 @@ import '../widgets/home_header.dart';
 import '../widgets/search_bar_widget.dart';
 import '../widgets/featured_car_card.dart';
 
+import '../../../story/data/story_dummy_data.dart';
 import '../../../story/presentation/widgets/stories_section.dart';
 
 
@@ -23,8 +24,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+
   List<CarModel> filteredCars =
       List.from(CarData.cars);
+
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    StoryDummyData.loadStories();
+  }
+
 
 
   void _searchCars(String query) {
@@ -40,7 +52,8 @@ class _HomePageState extends State<HomePage> {
 
         final q = query.toLowerCase();
 
-        filteredCars = CarData.cars.where((car) {
+        filteredCars =
+            CarData.cars.where((car) {
 
           return car.name
                   .toLowerCase()
@@ -58,12 +71,14 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
 
       backgroundColor: const Color(0xFF001F3F),
+
 
       body: SafeArea(
 
@@ -74,29 +89,37 @@ class _HomePageState extends State<HomePage> {
             vertical: 16,
           ),
 
+
           child: Column(
 
             crossAxisAlignment:
                 CrossAxisAlignment.start,
 
+
             children: [
+
 
               const HomeHeader(),
 
+
               const SizedBox(height: 20),
 
 
-              // User Stories
+
               const StoriesSection(),
 
 
+
               const SizedBox(height: 20),
+
 
 
               const FeaturedCarCard(),
 
 
+
               const SizedBox(height: 25),
+
 
 
               SearchBarWidget(
@@ -104,7 +127,9 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
+
               const SizedBox(height: 25),
+
 
 
               const Text(
@@ -117,7 +142,9 @@ class _HomePageState extends State<HomePage> {
               ),
 
 
+
               const SizedBox(height: 15),
+
 
 
               Expanded(
@@ -142,12 +169,14 @@ class _HomePageState extends State<HomePage> {
                         physics:
                             const BouncingScrollPhysics(),
 
+
                         itemCount:
                             filteredCars.length,
 
 
                         itemBuilder:
                             (context, index) {
+
 
                           return Padding(
 
@@ -166,11 +195,13 @@ class _HomePageState extends State<HomePage> {
 
                           );
 
+
                         },
 
                       ),
 
               ),
+
 
             ],
 
