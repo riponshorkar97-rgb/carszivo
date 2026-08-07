@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../features/splash/presentation/pages/splash_page.dart';
 import '../../features/main/presentation/pages/main_page.dart';
-import '../../features/auth/presentation/pages/login_page.dart';
+import '../../features/auth/presentation/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/car_details/presentation/pages/car_details_page.dart';
 import '../../features/sell/presentation/pages/my_listings_page.dart';
