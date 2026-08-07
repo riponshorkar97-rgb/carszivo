@@ -2,13 +2,13 @@ import 'models/story_model.dart';
 import 'story_manager.dart';
 
 class StoryDummyData {
+  StoryDummyData._();
 
   static void loadStories() {
 
     if (StoryManager.instance.count > 0) {
       return;
     }
-
 
     StoryManager.instance.addStory(
       StoryModel(
@@ -19,7 +19,6 @@ class StoryDummyData {
       ),
     );
 
-
     StoryManager.instance.addStory(
       StoryModel(
         id: "2",
@@ -28,7 +27,6 @@ class StoryDummyData {
             "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8",
       ),
     );
-
 
     StoryManager.instance.addStory(
       StoryModel(
@@ -39,7 +37,6 @@ class StoryDummyData {
       ),
     );
 
-
     StoryManager.instance.addStory(
       StoryModel(
         id: "4",
@@ -48,7 +45,5 @@ class StoryDummyData {
             "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
       ),
     );
-
   }
-
 }
