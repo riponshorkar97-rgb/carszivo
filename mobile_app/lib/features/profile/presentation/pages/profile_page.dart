@@ -143,7 +143,12 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
 
                     const SizedBox(height: 25),
-                                        Container(
+
+                    const ProfileStatistics(),
+
+                    const SizedBox(height: 25),
+
+                    Container(
                       width: double.infinity,
                       padding: const EdgeInsets.all(18),
                       decoration: BoxDecoration(
@@ -212,8 +217,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
 
                     const SizedBox(height: 20),
-
-                    Row(
+                                        Row(
                       children: [
 
                         Expanded(
@@ -281,7 +285,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
 
                     const SizedBox(height: 30),
-                                        SizedBox(
+
+                    SizedBox(
                       width: double.infinity,
                       height: 55,
                       child: ElevatedButton.icon(
@@ -332,12 +337,15 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
             Icon(
               icon,
               color: const Color(0xFF001F3F),
               size: 32,
             ),
+
             const SizedBox(height: 12),
+
             Text(
               title,
               style: const TextStyle(
@@ -349,6 +357,90 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
+    );
+  }
+}
+
+
+class ProfileStatistics extends StatelessWidget {
+  const ProfileStatistics({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(18),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(18),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+
+          _buildStat(
+            title: "Listings",
+            value: "0",
+            icon: Icons.directions_car,
+          ),
+
+          _buildStat(
+            title: "Favorites",
+            value: "0",
+            icon: Icons.favorite,
+          ),
+
+          _buildStat(
+            title: "Followers",
+            value: "0",
+            icon: Icons.people,
+          ),
+
+          _buildStat(
+            title: "Following",
+            value: "0",
+            icon: Icons.person_add,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStat({
+    required String title,
+    required String value,
+    required IconData icon,
+  }) {
+    return Column(
+      children: [
+
+        Icon(
+          icon,
+          color: const Color(0xFF001F3F),
+          size: 24,
+        ),
+
+        const SizedBox(height: 8),
+
+        Text(
+          value,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+
+        const SizedBox(height: 4),
+
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.black54,
+            fontSize: 12,
+          ),
+        ),
+      ],
     );
   }
 }
