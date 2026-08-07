@@ -12,7 +12,7 @@ class StoryDummyData {
 
 
     StoryManager.instance.addStory(
-      const StoryModel(
+      StoryModel(
         id: "1",
         userId: "bmw",
         username: "BMW",
@@ -24,7 +24,7 @@ class StoryDummyData {
 
 
     StoryManager.instance.addStory(
-      const StoryModel(
+      StoryModel(
         id: "2",
         userId: "mercedes",
         username: "Mercedes",
@@ -36,7 +36,7 @@ class StoryDummyData {
 
 
     StoryManager.instance.addStory(
-      const StoryModel(
+      StoryModel(
         id: "3",
         userId: "luxury",
         username: "Luxury",
@@ -48,7 +48,7 @@ class StoryDummyData {
 
 
     StoryManager.instance.addStory(
-      const StoryModel(
+      StoryModel(
         id: "4",
         userId: "carszivo",
         username: "Carszivo",
