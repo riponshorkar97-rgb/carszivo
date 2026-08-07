@@ -1,4 +1,5 @@
 class StoryModel {
+
   final String id;
   final String username;
   final String imageUrl;
@@ -8,4 +9,5 @@ class StoryModel {
     required this.username,
     required this.imageUrl,
   });
+
 }
