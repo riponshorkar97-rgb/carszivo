@@ -35,7 +35,6 @@ class _RegisterPageState extends State<RegisterPage> {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
-
     super.dispose();
   }
 
@@ -123,7 +122,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
       backgroundColor: const Color(0xFF001F3F),
 
-
       appBar: AppBar(
 
         backgroundColor: const Color(0xFF001F3F),
@@ -133,14 +131,11 @@ class _RegisterPageState extends State<RegisterPage> {
         centerTitle: true,
 
         title: const Text(
-
           "Create Account",
-
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
-
         ),
 
       ),
@@ -174,19 +169,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
                   const Text(
-
                     "Join Carszivo",
-
                     style: TextStyle(
-
                       color: Colors.white,
-
                       fontSize: 30,
-
                       fontWeight: FontWeight.bold,
-
                     ),
-
                   ),
 
 
@@ -194,19 +182,12 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
                   const Text(
-
                     "Create your luxury marketplace account",
-
                     textAlign: TextAlign.center,
-
                     style: TextStyle(
-
                       color: Colors.white70,
-
                       fontSize: 15,
-
                     ),
-
                   ),
 
 
@@ -214,11 +195,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
                   CustomTextField(
-
                     hintText: "Full Name",
-
                     controller: nameController,
-
                   ),
 
 
@@ -226,11 +204,8 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
                   CustomTextField(
-
                     hintText: "Email Address",
-
                     controller: emailController,
-
                   ),
 
 
@@ -238,13 +213,9 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
                   CustomTextField(
-
                     hintText: "Password",
-
                     controller: passwordController,
-
                     obscureText: true,
-
                   ),
 
 
@@ -256,7 +227,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     text: "Create Account",
 
                     onPressed: _isLoading
-                        ? null
+                        ? () {}
                         : _register,
 
                   ),
