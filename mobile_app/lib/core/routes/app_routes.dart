@@ -5,6 +5,7 @@ import '../../features/main/presentation/pages/main_page.dart';
 import '../../features/auth/presentation/pages/login_page.dart';
 import '../../features/auth/presentation/pages/register_page.dart';
 import '../../features/car_details/presentation/pages/car_details_page.dart';
+import '../../features/profile/presentation/pages/my_listings_page.dart';
 import '../../features/home/data/models/car_model.dart';
 
 class AppRoutes {
@@ -13,9 +14,11 @@ class AppRoutes {
   static const String login = '/login';
   static const String register = '/register';
   static const String carDetails = '/car-details';
+  static const String myListings = '/my-listings';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
+
       case splash:
         return MaterialPageRoute(
           builder: (_) => const SplashPage(),
@@ -43,6 +46,11 @@ class AppRoutes {
           builder: (_) => CarDetailsPage(
             car: car,
           ),
+        );
+
+      case myListings:
+        return MaterialPageRoute(
+          builder: (_) => const MyListingsPage(),
         );
 
       default:
