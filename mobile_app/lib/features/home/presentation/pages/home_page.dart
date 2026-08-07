@@ -40,8 +40,7 @@ class _HomePageState extends State<HomePage> {
 
         final q = query.toLowerCase();
 
-        filteredCars =
-            CarData.cars.where((car) {
+        filteredCars = CarData.cars.where((car) {
 
           return car.name
                   .toLowerCase()
@@ -87,7 +86,7 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(height: 20),
 
 
-              // Story Section
+              // User Stories
               const StoriesSection(),
 
 
@@ -150,7 +149,6 @@ class _HomePageState extends State<HomePage> {
                         itemBuilder:
                             (context, index) {
 
-
                           return Padding(
 
                             padding:
@@ -167,7 +165,6 @@ class _HomePageState extends State<HomePage> {
                             ),
 
                           );
-
 
                         },
 
