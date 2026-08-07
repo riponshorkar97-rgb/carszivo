@@ -28,6 +28,7 @@ class StoryCard extends StatelessWidget {
 
           Text(
             story.username,
+            maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: Colors.white,
