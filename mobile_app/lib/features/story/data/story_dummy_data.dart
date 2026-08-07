@@ -1,8 +1,8 @@
 import 'models/story_model.dart';
 import 'story_manager.dart';
 
+
 class StoryDummyData {
-  StoryDummyData._();
 
   static void loadStories() {
 
@@ -10,8 +10,9 @@ class StoryDummyData {
       return;
     }
 
+
     StoryManager.instance.addStory(
-      StoryModel(
+      const StoryModel(
         id: "1",
         username: "BMW",
         imageUrl:
@@ -19,8 +20,9 @@ class StoryDummyData {
       ),
     );
 
+
     StoryManager.instance.addStory(
-      StoryModel(
+      const StoryModel(
         id: "2",
         username: "Mercedes",
         imageUrl:
@@ -28,8 +30,9 @@ class StoryDummyData {
       ),
     );
 
+
     StoryManager.instance.addStory(
-      StoryModel(
+      const StoryModel(
         id: "3",
         username: "Luxury",
         imageUrl:
@@ -37,13 +40,15 @@ class StoryDummyData {
       ),
     );
 
+
     StoryManager.instance.addStory(
-      StoryModel(
+      const StoryModel(
         id: "4",
         username: "Carszivo",
         imageUrl:
             "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
       ),
     );
+
   }
 }
