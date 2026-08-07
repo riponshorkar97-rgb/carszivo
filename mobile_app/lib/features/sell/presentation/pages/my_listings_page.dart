@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../sell_car/data/listing_manager.dart';
+import '../../../sell_car/data/listing_manager.dart';
 
 class MyListingsPage extends StatefulWidget {
   const MyListingsPage({super.key});
@@ -9,7 +9,6 @@ class MyListingsPage extends StatefulWidget {
   State<MyListingsPage> createState() => _MyListingsPageState();
 }
 
-
 class _MyListingsPageState extends State<MyListingsPage> {
 
   @override
@@ -17,11 +16,9 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
     final listings = ListingManager.instance.listings;
 
-
     return Scaffold(
 
       backgroundColor: const Color(0xFF001F3F),
-
 
       appBar: AppBar(
 
@@ -68,7 +65,9 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                   ),
 
+
                   const SizedBox(height: 20),
+
 
                   const Text(
 
@@ -86,7 +85,9 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                   ),
 
+
                   const SizedBox(height: 10),
+
 
                   const Text(
 
@@ -125,11 +126,14 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                   elevation: 0,
 
+                  color: Colors.white,
+
                   shape: RoundedRectangleBorder(
 
                     borderRadius: BorderRadius.circular(16),
 
                   ),
+
 
                   child: ListTile(
 
@@ -147,6 +151,7 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                     ),
 
+
                     title: Text(
 
                       car.name,
@@ -155,13 +160,22 @@ class _MyListingsPageState extends State<MyListingsPage> {
 
                         fontWeight: FontWeight.bold,
 
+                        color: Colors.black,
+
                       ),
 
                     ),
 
+
                     subtitle: Text(
 
                       car.brand,
+
+                      style: const TextStyle(
+
+                        color: Colors.black54,
+
+                      ),
 
                     ),
 
