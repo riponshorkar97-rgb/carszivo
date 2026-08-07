@@ -4,6 +4,7 @@ import '../../../../core/routes/app_routes.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/data/repositories/auth_repository.dart';
 import '../../../favorites/data/favorites_manager.dart';
+import '../../../sell_car/data/listing_manager.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -216,7 +217,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-                    Row(
+
+                    const SizedBox(height: 20),
+                                        Row(
                       children: [
 
                         Expanded(
@@ -379,7 +382,7 @@ class ProfileStatistics extends StatelessWidget {
 
           _buildStat(
             title: "Listings",
-            value: "0",
+            value: ListingManager.instance.count.toString(),
             icon: Icons.directions_car,
           ),
 
@@ -443,5 +446,3 @@ class ProfileStatistics extends StatelessWidget {
     );
   }
 }
-                    const SizedBox(height: 20),
-                    
