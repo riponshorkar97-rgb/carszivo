@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../core/routes/app_routes.dart';
 import '../../../auth/data/models/user_model.dart';
 import '../../../auth/data/repositories/auth_repository.dart';
+import '../../../favorites/data/favorites_manager.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -215,9 +216,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                     ),
-
-                    const SizedBox(height: 20),
-                                        Row(
+                    Row(
                       children: [
 
                         Expanded(
@@ -386,7 +385,7 @@ class ProfileStatistics extends StatelessWidget {
 
           _buildStat(
             title: "Favorites",
-            value: "0",
+            value: FavoritesManager.instance.count.toString(),
             icon: Icons.favorite,
           ),
 
@@ -444,3 +443,5 @@ class ProfileStatistics extends StatelessWidget {
     );
   }
 }
+                    const SizedBox(height: 20),
+                    
