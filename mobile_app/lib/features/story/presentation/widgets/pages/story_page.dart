@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
 
-import '../../data/story_manager.dart';
-import '../widgets/story_card.dart';
+import '../../../data/story_manager.dart';
+import '../story_card.dart';
 
 class StoryPage extends StatelessWidget {
-  const StoryPage({super.key});
+  const StoryPage({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+
     final stories = StoryManager.instance.stories;
 
     return Scaffold(
+
       backgroundColor: const Color(0xFF001F3F),
 
       appBar: AppBar(
@@ -24,6 +28,7 @@ class StoryPage extends StatelessWidget {
       ),
 
       body: stories.isEmpty
+
           ? const Center(
               child: Text(
                 "No stories yet",
@@ -35,15 +40,19 @@ class StoryPage extends StatelessWidget {
             )
 
           : ListView.builder(
+
               scrollDirection: Axis.horizontal,
+
               padding: const EdgeInsets.all(16),
 
               itemCount: stories.length,
 
               itemBuilder: (context, index) {
+
                 return StoryCard(
                   story: stories[index],
                 );
+
               },
             ),
     );
