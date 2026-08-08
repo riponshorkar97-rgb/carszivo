@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../../../home/presentation/pages/home_page.dart';
@@ -5,6 +6,7 @@ import '../../../favorites/presentation/pages/favorites_page.dart';
 import '../../../sell/presentation/pages/sell_page.dart';
 import '../../../chat/presentation/pages/chat_page.dart';
 import '../../../profile/presentation/pages/profile_page.dart';
+import '../../../../core/routes/app_routes.dart';
 import '../../../../core/widgets/bottom_nav_bar.dart';
 
 class MainPage extends StatefulWidget {
@@ -25,6 +27,30 @@ class _MainPageState extends State<MainPage> {
     ProfilePage(),
   ];
 
+  bool get _isLoggedIn {
+    return FirebaseAuth.instance.currentUser != null;
+  }
+
+  void _onTabSelected(int index) {
+    // Home is always available to guests.
+    if (index == 0) {
+      setState(() {
+        _currentIndex = index;
+      });
+      return;
+    }
+
+    // All other tabs require authentication.
+    if (!_isLoggedIn) {
+      Navigator.pushNamed(context, AppRoutes.login);
+      return;
+    }
+
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,14 +58,9 @@ class _MainPageState extends State<MainPage> {
         index: _currentIndex,
         children: _pages,
       ),
-
       bottomNavigationBar: BottomNavBar(
         currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
+        onTap: _onTabSelected,
       ),
     );
   }
